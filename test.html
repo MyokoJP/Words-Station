@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;900&family=Roboto&display=swap" rel="stylesheet">
+</head>
+<p class="question">～を確信する</p>
+<form method="post">
+    <label for="text3" class="l_text3"></label>
+    <input id="text3" type="text" name="answer" class="input" placeholder="答えを入力してください">
+    <div class="text_underline"></div>
+    <input type="submit" class="submit" value="送信"/>
+</form>
+</body>
+
+<style>
+    .submit{
+        background: linear-gradient(135deg, #ffd900, #3bdfe5);
+        color: #fff;
+        font-weight: bold;
+        border-radius: 8px;
+        transition: 0.3s;
+        border: 2px solid #3bdfe5;
+        background: #fff;
+        color: #3bdfe5;
+        width: 100%;
+        max-width: 200px;
+        box-sizing: border-box;
+        padding: 10px;
+        display: block;
+        margin: 5% auto;
+        position: relative;
+        text-align: center;
+    }
+    .submit:hover{
+        background: #3bdfe5;
+        color: #fff;
+    }
+    .submit:active, .submit:focus{
+        top: 2px;
+    }
+    #text3{
+        font-size: 32px;
+        width: 100%;
+        border: none;
+        outline: none;
+        padding-bottom: 8px;
+        box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+        text-align: left;
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 400;
+    }
+    .text_underline{
+        position: relative; /*.text_underline::beforeの親要素*/
+        border-top: 1px solid #c2c2c2; /*text3の下線*/
+    }
+
+    /*共通のstyle*/
+    .text_underline::before,
+    .text_underline::after {
+        position: absolute;
+        bottom: 0px; /*中央配置*/
+        width: 0px; /*アニメーションで0pxから50%に*/
+        height: 2px; /*高さ*/
+        content: '';
+        background-color: #3bdfe5; /*アニメーションの色*/
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+    }
+
+    /*中央から右へのアニメーション*/
+    .text_underline::before{
+        left: 50%; /*中央配置*/
+    }
+
+    /*中央から左へのアニメーション*/
+    .text_underline::after{
+        right: 50%; /*中央配置*/
+    }
+
+    #text3:focus + .text_underline::before,
+    #text3:focus + .text_underline::after{
+        width: 50%;
+    }
+    .question{
+        font-family: 'Noto Sans JP', sans-serif;
+        font-size: 9rem;
+        text-align: center;
+
+    }
+    form {
+        position: relative;
+        z-index: 1;
+        background: #ffffff;
+        max-width: 500px;
+        margin: 0 auto 100px;
+        padding: 45px;
+        text-align: center;
+    }
+    .form input{
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 300;
+        font-style: normal;
+        outline: 0;
+        background: #f2f2f2;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+    .correct{
+        margin-top: 18%;
+        font-family: 'Noto Sans JP', sans-serif;
+        font-weight: 900;
+        color: #e30000;
+        font-size: 9em;
+        text-align: center;
+        animation-name: fadeIn;
+        animation-fill-mode:backwards;
+        animation-duration:0.3s;
+        animation-timing-function:ease-in;
+        animation-delay: 0.5s;
+        animation-direction:normal;
+    }
+    @keyframes fadeIn {
+        0%{opacity: 0;}
+        100%{opacity: 1;}
+    }
+    *,
+    *:before,
+    *:after {
+        -webkit-box-sizing: inherit;
+        box-sizing: inherit;
+    }
+
+    html {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        font-size: 62.5%;
+    }
+
+    .btn,
+    a.btn,
+    button.btn {
+        animation-name: fadeIn;
+        animation-fill-mode:backwards;
+        animation-duration:0.3s;
+        animation-timing-function:ease-in;
+        animation-delay: 0.5s;
+        animation-direction:normal;
+        font-size: 1.6rem;
+        font-weight: 700;
+        line-height: 1.5;
+        position: relative;
+        display: inline-block;
+        padding: 1rem 4rem;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        text-align: center;
+        vertical-align: middle;
+        text-decoration: none;
+        letter-spacing: 0.1em;
+        color: #212529;
+        border-radius: 0.5rem;
+    }
+
+    a.btn-flat {
+        overflow: hidden;
+
+        padding: 1.5rem 6rem;
+
+        color: #fff;
+        border-radius: 0;
+        background: #000;
+    }
+
+    a.btn-flat span {
+        position: relative;
+    }
+
+    a.btn-flat:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 150%;
+        height: 500%;
+
+        content: "";
+        -webkit-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+        transform: translateX(-98%) translateY(-25%) rotate(45deg);
+
+        background: #00b7ee;
+    }
+
+    a.btn-flat:hover:before {
+        -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+        transform: translateX(-9%) translateY(-25%) rotate(45deg);
+    }
+    .button{
+        padding: 30px 10px;
+        width: 100%;
+        text-align: center;
+    }
+</style>
+</html>
